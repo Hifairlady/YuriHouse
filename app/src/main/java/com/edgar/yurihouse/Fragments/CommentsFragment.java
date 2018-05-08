@@ -121,12 +121,17 @@ public class CommentsFragment extends Fragment {
                     int endPos = jsonString.lastIndexOf("]") + 1;
                     jsonString = jsonString.substring(startPos, endPos);
                     if (jsonString.charAt(0) != '[' && jsonString.charAt(jsonString.length()-1) != ']') {
-                        Snackbar.make(lvHotCommentsContainer, R.string.no_data_string,
-                                Snackbar.LENGTH_SHORT).show();
                         return;
                     }
                     Type listType = new TypeToken<ArrayList<CommentItem>>() {}.getType();
                     hotComments = new GsonBuilder().create().fromJson(jsonString, listType);
+
+                    if (hotComments == null || hotComments.size() == 0) {
+                        btnLoadHotComments.setText(R.string.no_any_hot_coments);
+                        commentController.setupComments(allUrl, allJsonHandler);
+                        return;
+                    }
+
                     loadComments(lvHotCommentsContainer, hotComments);
                     btnLoadHotComments.setClickable(true);
                     btnLoadHotComments.setText(R.string.check_hot_comments_string);
@@ -164,11 +169,16 @@ public class CommentsFragment extends Fragment {
                     int endPos = jsonString.lastIndexOf("]") + 1;
                     jsonString = jsonString.substring(startPos, endPos);
                     if (jsonString.charAt(0) != '[' && jsonString.charAt(jsonString.length()-1) != ']') {
-//                            Log.d(TAG, "handleMessage: bad json string");
                         return;
                     }
                     Type listType = new TypeToken<ArrayList<CommentItem>>() {}.getType();
                     allComments = new GsonBuilder().create().fromJson(jsonString, listType);
+
+                    if (allComments == null || allComments.size() == 0) {
+                        btnLoadAllComments.setText(R.string.no_any_comments);
+                        return;
+                    }
+
                     loadComments(lvAllCommentsContainer, allComments);
                     btnLoadAllComments.setClickable(true);
                     btnLoadAllComments.setText(R.string.check_all_comments_string);

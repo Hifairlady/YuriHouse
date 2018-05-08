@@ -57,7 +57,7 @@
     <string name="all_comments_string">全部评论</string>
     <string name="check_all_comments_string">查看全部评论</string>
     <string name="author_other_mangas">作者其他作品</string>
-    <string name="searching_string">搜索中...</string>
+    <string name="searching_string">搜索中 ......</string>
     <string name="loading_next_page_string">加载下一页</string>
 
     <string name="request_permission_failed_string">申请设备存储空间访问权限失败</string>
@@ -84,4 +84,6 @@
     <string name="search_failed_string">搜索失败</string>
     <string name="viewpoint_username_string">%s@Page %d</string>
     <string name="viewpoint_number_string">+ %d</string>
+    <string name="no_any_hot_coments">暂无热评</string>
+    <string name="no_any_comments">暂无评论</string>
 </resources>

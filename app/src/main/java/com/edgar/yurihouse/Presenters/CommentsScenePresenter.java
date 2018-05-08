@@ -151,7 +151,7 @@ public class CommentsScenePresenter {
                     ArrayList<CommentItem> items = commentController.getCommentItems(jsonString);
                     if (items == null || items.size() == 0) {
                         isLoadingNextPage = true;
-                        Snackbar.make(recyclerView, context.getString(R.string.no_data_string),
+                        Snackbar.make(recyclerView, context.getString(R.string.has_loaded_all_string),
                                 Snackbar.LENGTH_SHORT).show();
                         return;
                     }

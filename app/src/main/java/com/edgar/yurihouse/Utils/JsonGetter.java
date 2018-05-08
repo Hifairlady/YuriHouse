@@ -34,10 +34,6 @@ public class JsonGetter extends Thread {
         try {
             URL url = new URL(urlString);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.addRequestProperty("Referer", "https://m.dmzj.com/classify.html");
-            connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36");
-            connection.addRequestProperty("X-Requested-With", "XMLHttpRequest");
             connection.setConnectTimeout(5000);
             connection.connect();
             InputStream stream = connection.getInputStream();

@@ -165,6 +165,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public void removeFooter() {
+        if (commentItems.size() == 0)return;
         if (getItemViewType(commentItems.size() - 1) == MangaItem.TYPE_FOOTER) {
             commentItems.remove(commentItems.size() - 1);
             notifyItemRemoved(commentItems.size());
