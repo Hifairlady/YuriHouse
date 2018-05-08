@@ -38,38 +38,43 @@
         <TextView
             android:id="@+id/tv_search_item_title"
             style="@style/SearchResultInfoTitle"
-            android:layout_width="224dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:ellipsize="end"
             android:text="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="@+id/cover_image"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cover_image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_authors_circle"
+            app:layout_constraintBottom_toTopOf="@+id/imageView4"
             app:layout_constraintStart_toEndOf="@+id/cover_image"
-            app:layout_constraintTop_toBottomOf="@+id/tv_search_item_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_search_item_title"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/tv_search_item_authors"
             style="@style/SearchResultInfoNormal"
-            android:layout_width="112dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/app_name"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toStartOf="@+id/tv_search_item_chapter"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -77,23 +82,25 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_label"
-            app:layout_constraintStart_toEndOf="@+id/cover_image"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintBottom_toTopOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/cover_image" />
 
         <TextView
             android:id="@+id/tv_search_item_types"
             style="@style/SearchResultInfoNormal"
-            android:layout_width="112dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/app_name"
             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintEnd_toStartOf="@+id/tv_search_item_chapter"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
@@ -101,25 +108,26 @@
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_clock"
-            app:layout_constraintStart_toEndOf="@+id/cover_image"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cover_image" />
 
         <TextView
             android:id="@+id/tv_search_item_time"
             style="@style/SearchResultInfoNormal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_slab"
             android:text="@string/app_name"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
@@ -127,32 +135,29 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_book"
-            app:layout_constraintBottom_toTopOf="@+id/tv_search_item_chapter"
             app:layout_constraintEnd_toEndOf="@+id/tv_search_item_chapter"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_search_item_chapter" />
+            app:layout_constraintStart_toStartOf="@+id/tv_search_item_chapter"
+            app:layout_constraintTop_toBottomOf="@+id/tv_search_item_title" />
 
         <TextView
             android:id="@+id/tv_search_item_chapter"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:maxLines="1"
             android:text="@string/loading_message_string"
             android:textColor="@color/primary_text"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.652" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     </android.support.constraint.ConstraintLayout>
 

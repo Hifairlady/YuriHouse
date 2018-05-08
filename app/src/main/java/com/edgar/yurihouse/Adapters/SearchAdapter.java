@@ -23,53 +23,67 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "====================" + SearchAdapter.class.getSimpleName();
 
     private Context context;
-    private ArrayList<SearchResultItem> resultItems;
+    private ArrayList<SearchResultItem> resultItems = new ArrayList<>();
 
     public SearchAdapter(Context context, ArrayList<SearchResultItem> resultItems) {
         this.context = context;
-        this.resultItems = resultItems;
+        this.resultItems.add(new SearchResultItem(SearchResultItem.TYPE_HEADER));
+        this.resultItems.addAll(resultItems);
     }
 
     @NonNull
     @Override
-    public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == SearchResultItem.TYPE_HEADER) {
+            View itemView = LayoutInflater.from(context).inflate(R.layout.item_search_result_header,
+                    parent, false);
+            return new SearchHeaderHolder(itemView);
+        }
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_search_result,
                 parent, false);
         return new SearchViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+
+        if (holder instanceof SearchHeaderHolder) {
+            ((SearchHeaderHolder) holder).tvSearchCount.setText(context.getString(R.string.search_result_count_string,
+                    resultItems.size() - 1));
+            return;
+        }
+
+        SearchViewHolder mHolder = (SearchViewHolder) holder;
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_from_bottom);
-        holder.mView.startAnimation(animation);
+        mHolder.mView.startAnimation(animation);
 
         final SearchResultItem resultItem = resultItems.get(position);
         String urlString = resultItem.getCover();
         if (!urlString.startsWith("https")) {
             urlString = "https://images.dmzj.com/" + urlString;
         }
-        GlideUtil.setImageView(context, holder.ivCover, urlString);
+        GlideUtil.setImageView(context, mHolder.ivCover, urlString);
 
-        holder.tvTitle.setText(resultItem.getName());
-        holder.tvAuthors.setText(resultItem.getAuthors());
-        holder.tvTypes.setText(resultItem.getTypes());
-        holder.tvChapter.setText(resultItem.getLast_update_chapter_name());
+        mHolder.tvTitle.setText(resultItem.getName());
+        mHolder.tvAuthors.setText(resultItem.getAuthors());
+        mHolder.tvTypes.setText(resultItem.getTypes());
+        mHolder.tvChapter.setText(resultItem.getLast_update_chapter_name());
         String dateString = getDateString(resultItem.getLast_updatetime());
-        holder.tvTime.setText(dateString);
+        mHolder.tvTime.setText(dateString);
 
         if (resultItem.getStatus().equals("连载中")) {
-            holder.ivFinishedLogo.setVisibility(View.GONE);
+            mHolder.ivFinishedLogo.setVisibility(View.GONE);
         } else {
-            holder.ivFinishedLogo.setVisibility(View.VISIBLE);
+            mHolder.ivFinishedLogo.setVisibility(View.VISIBLE);
         }
 
-        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+        mHolder.rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                SearchResultItem resultItem = resultItems.get(position);
@@ -84,6 +98,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             }
         });
 
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return resultItems.get(position).getItemType();
     }
 
     @Override
@@ -114,11 +133,22 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     }
 
+    protected class SearchHeaderHolder extends RecyclerView.ViewHolder {
+
+        private TextView tvSearchCount;
+
+        public SearchHeaderHolder(View itemView) {
+            super(itemView);
+            tvSearchCount = itemView.findViewById(R.id.tv_search_count);
+        }
+    }
+
     private String getDateString(long lastUpdateTime) {
         long times = lastUpdateTime * 1000;
         Date date = new Date(times);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return formatter.format(date);
     }
+
 
 }

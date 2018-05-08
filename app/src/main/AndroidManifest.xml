@@ -19,13 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SearchActivity" />
+        <activity android:name=".Activities.SearchActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Activities.MangaActivity"
             android:launchMode="singleTask" />
         <activity android:name=".Activities.AuthorActivity" />
         <activity android:name=".Activities.CommentsActivity" />
-        <activity android:name=".Activities.CommentImageActivity"></activity>
+        <activity android:name=".Activities.CommentImageActivity" />
     </application>
 
 </manifest>

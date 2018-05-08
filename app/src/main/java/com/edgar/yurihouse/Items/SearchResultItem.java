@@ -17,6 +17,9 @@ public class SearchResultItem {
 //"description": "主人公埼玉原本是一名整日奔波于求职的普通人。3年前的一天偶然遇到了要对淘气少年下杀手的异变螃蟹人后，回忆起年少年时“想要成为英雄”的梦想，最终拼尽全力救下了淘气少年。之后通过拼命锻炼，埼玉终于脱胎换骨获得了最强的力量，但同时失去了头发成了光头。在独自做了一段时间英雄后，正式加入英雄协会，与众多英雄一起开始了对抗各种怪人以及恶势力的生活……",
 //"cover": "webpic/1/onepunchmanfengmianl.jpg"
 
+    public static final int TYPE_NORMAL = 0, TYPE_HEADER = 1, TYPE_FOOTER = 2;
+    private int itemType = 0;
+
     private int id, last_update_chapter_id, hot_hits;
     private long last_updatetime;
     private String name, comic_py, alias_name, authors, types, zone, status, last_update_chapter_name,
@@ -37,6 +40,14 @@ public class SearchResultItem {
         this.last_update_chapter_name = last_update_chapter_name;
         this.description = description;
         this.cover = cover;
+    }
+
+    public int getItemType() {
+        return itemType;
+    }
+
+    public SearchResultItem(int itemType) {
+        this.itemType = itemType;
     }
 
     public int getId() {
