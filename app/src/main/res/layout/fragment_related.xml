@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Fragments.RelatedFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_unknown_error_page" />
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/lv_related_has_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_author_related_title"
+                style="@style/ChapterCardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="@string/author_other_mangas" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/related_recycler_view1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"/>
+
+            <TextView
+                style="@style/ChapterCardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="@string/similar_types_string" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/related_recycler_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

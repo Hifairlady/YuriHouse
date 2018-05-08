@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/lv_brief_intro_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info_intro"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
+            android:text="@string/brief_intro_title_string"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_brief_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/InfoBriefIntroText"
+        android:ellipsize="end"
+        android:text="@string/loading_message_string"/>
+
+    <ImageView
+        android:id="@+id/iv_intro_icon_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_expand_more"/>
+
+</LinearLayout>

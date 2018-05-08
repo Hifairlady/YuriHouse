@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Fragments.CommentsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hot_comments_string"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/secondary_text"
+            android:padding="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/lv_hot_comment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btn_load_all_hot_comments"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:text="@string/check_hot_comments_string"
+            android:textSize="16sp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/all_comments_string"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/secondary_text"
+            android:padding="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/lv_all_comment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btn_load_all_comments"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:text="@string/check_all_comments_string"
+            android:layout_marginBottom="56dp"
+            android:textSize="16sp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

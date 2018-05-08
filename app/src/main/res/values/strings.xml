@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">YuriHouse</string>
+    <string name="filter_status_string">状态</string>
+    <string name="filter_region_string">地区</string>
+    <string name="filter_order_string">排序</string>
+    <string name="filter_region_all_string">全部</string>
+    <string name="filter_region_jp_string">日本</string>
+    <string name="filter_region_cn_string">内地</string>
+    <string name="filter_region_en_string">欧美</string>
+    <string name="filter_region_hktw_string">港台</string>
+    <string name="filter_region_kr_string">韩国</string>
+    <string name="filter_region_other_string">其他</string>
+    <string name="filter_status_all_string">全部</string>
+    <string name="menu_filter_string">排序过滤</string>
+    <string name="grid_mode_on_string">开启网格</string>
+    <string name="grid_mode_off_string">关闭网格</string>
+    <string name="filter_status_serializing_string">连载中</string>
+    <string name="filter_status_finished_string">已完结</string>
+    <string name="sort_dialog_title_string">排序过滤</string>
+    <string name="filter_order_click_string">人气</string>
+    <string name="filter_order_update_string">更新</string>
+    <string name="filter_order_default_string">默认</string>
+    <string name="filter_button_dismiss_string">取消</string>
+    <string name="filter_button_apply_string">应用</string>
+    <string name="sharedpreference_filter_settings_string">filterSettings</string>
+    <string name="chapter_is_serializing">连载中</string>
+    <string name="menu_search_string">搜索</string>
+    <string name="info_title_string_extra">titleString</string>
+    <string name="info_url_string_extra">urlString</string>
+    <string name="full_title_string_extra">fullTitleString</string>
+    <string name="authors_string_extra">authorsStrings</string>
+    <string name="back_up_url_string_extra">backupUrl</string>
+    <string name="loading_no_data_string">没有数据了!</string>
+    <string name="search_view_hint_string">作品名、作者名</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_chapter_list_title">章节信息</string>
+    <string name="info_related_chapter_title">相关作品</string>
+    <string name="info_comment_title">评论</string>
+    <string name="info_type_string_extra">typeString</string>
+    <string name="info_status_string_extra">statusString</string>
+    <string name="brief_intro_title_string">简介</string>
+    <string name="info_related_url_extra">relatedUrl</string>
+    <string name="loading_message_string">加载中 ......</string>
+    <string name="chapter_list_all_string">所有章节</string>
+    <string name="chapter_order_ascending">正序</string>
+    <string name="chapter_order_descending">倒序</string>
+    <string name="similar_types_string">同类题材作品</string>
+    <string name="no_data_string">没有数据！</string>
+    <string name="retry_button_string">重试</string>
+    <string name="search_quote_text_string">“Never give up, for that is just the place and time that the tide will turn.”</string>
+    <string name="search_hint_string">输入作品名、作者名搜索</string>
+    <string name="spannable_string_test">spannable string with username clickable</string>
+    <string name="hot_comments_string">热门评论</string>
+    <string name="check_hot_comments_string">查看全部热评</string>
+    <string name="all_comments_string">全部评论</string>
+    <string name="check_all_comments_string">查看全部评论</string>
+    <string name="author_other_mangas">作者其他作品</string>
+    <string name="searching_string">搜索中...</string>
+    <string name="loading_next_page_string">加载下一页</string>
+
+    <string name="request_permission_failed_string">申请设备存储空间访问权限失败</string>
+    <string name="request_rationale_string">LilyHouse 将申请设备存储空间访问权限以便启用下载功能。您愿意授权吗？</string>
+    <string name="drawer_chapter_viewpoints">吐槽</string>
+    <string name="previous_chapter_button_string">上一章</string>
+    <string name="next_chapter_button_string">下一章</string>
+
+
+    <string name="total_chapters_num">共 %d 章</string>
+    <string name="comment_image_detail_title">图片详情</string>
+    <string name="network_error_string">网络错误</string>
+    <string name="drawer_translator_name">Translator: %s</string>
+    <string name="drawer_authors_name">Authors: %s</string>
+    <string name="search_result_count_string">共 %d 条搜索结果</string>
+    <string name="cover_author_string">作者: %s</string>
+    <string name="cover_types_string">类别: %s</string>
+    <string name="inner_comment_floor_num_string">#%d</string>
+    <string name="loading_comments_failed_string">评论加载失败</string>
+    <string name="all_hot_comments_string_extra">全部热评</string>
+    <string name="all_comments_string_extra">全部评论</string>
+    <string name="has_loaded_all_string">已全部加载</string>
+    <string name="exit_double_click_string">再点击一次返回键退出</string>
+    <string name="search_failed_string">搜索失败</string>
+    <string name="viewpoint_username_string">%s@Page %d</string>
+    <string name="viewpoint_number_string">+ %d</string>
+</resources>
