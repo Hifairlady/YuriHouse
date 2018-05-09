@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edgar.yurihouse">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,14 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SearchActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".Activities.SearchActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Activities.MangaActivity"
             android:launchMode="singleTask" />
         <activity android:name=".Activities.AuthorActivity" />
         <activity android:name=".Activities.CommentsActivity" />
         <activity android:name=".Activities.CommentImageActivity" />
+        <activity android:name=".Activities.ReaderActivity"></activity>
     </application>
 
 </manifest>

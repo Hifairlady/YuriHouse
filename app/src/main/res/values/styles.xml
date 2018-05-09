@@ -128,4 +128,11 @@
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/secondary_text</item>
     </style>
+
+    <style name="ReaderInfoText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+    </style>
 </resources>

@@ -1,6 +1,7 @@
 package com.edgar.yurihouse.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.edgar.yurihouse.Activities.ReaderActivity;
 import com.edgar.yurihouse.Items.ChapterItem;
 import com.edgar.yurihouse.R;
 
@@ -61,45 +63,46 @@ public class GridExAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // TODO: 2018\5\1 chapter item click event
-//                storeWatchState(String.valueOf(chapterItem.getData().get(position).getId()), true);
-//                tvNew.setVisibility(View.GONE);
-//
-//                String urlString = "https://m.dmzj.com/view/" + chapterItem.getData().get(position).getComic_id() +
-//                        "/" + chapterItem.getData().get(position).getId() + ".html";
-//
-//                Intent readerIntent = new Intent(context, ReaderActivity.class);
-//                readerIntent.putExtra(context.getString(R.string.info_title_string_extra),
-//                        chapterItem.getData().get(position).getChapter_name());
-//
-//                String fullTitleString = titleString + "/" + chapterItem.getData().get(position).getTitle() +
-//                        "/" + chapterItem.getData().get(position).getChapter_name();
-//                readerIntent.putExtra(context.getString(R.string.info_url_string_extra), urlString);
-//                readerIntent.putExtra(context.getString(R.string.full_title_string_extra), fullTitleString);
-//                readerIntent.putExtra(context.getString(R.string.authors_string_extra), authorsStrings);
-//
-//                readerIntent.putExtra("chapterId", chapterItem.getData().get(position).getId());
-//                readerIntent.putExtra("comicId", chapterItem.getData().get(position).getComic_id());
-//
-//
-//                if (position != 0 && position != chapterItem.getData().size() - 1) {
-//                    readerIntent.putExtra("previousVisibility", View.VISIBLE);
-//                    readerIntent.putExtra("nextVisibility", View.VISIBLE);
-//                } else {
-//                    if (isAscending && position == 0) {
-//                        readerIntent.putExtra("previousVisibility", View.GONE);
-//                    }
-//                    if (isAscending && position == chapterItem.getData().size() - 1) {
-//                        readerIntent.putExtra("nextVisibility", View.GONE);
-//                    }
-//                    if (!isAscending && position == 0) {
-//                        readerIntent.putExtra("nextVisibility", View.GONE);
-//                    }
-//                    if (!isAscending && position == chapterItem.getData().size() - 1) {
-//                        readerIntent.putExtra("previousVisibility", View.GONE);
-//                    }
-//                }
-//
-//                context.startActivity(readerIntent);
+                storeWatchState(String.valueOf(chapterItem.getData().get(position).getId()), true);
+                tvNew.setVisibility(View.GONE);
+
+                String urlString = "https://m.dmzj.com/view/" + chapterItem.getData().get(position).getComic_id() +
+                        "/" + chapterItem.getData().get(position).getId() + ".html";
+
+                Intent readerIntent = new Intent(context, ReaderActivity.class);
+                readerIntent.putExtra(context.getString(R.string.info_title_string_extra),
+                        chapterItem.getData().get(position).getChapter_name());
+
+                String fullTitleString = titleString + "/" + chapterItem.getData().get(position).getTitle() +
+                        "/" + chapterItem.getData().get(position).getChapter_name();
+                readerIntent.putExtra(context.getString(R.string.info_url_string_extra), urlString);
+                readerIntent.putExtra(context.getString(R.string.full_title_string_extra), fullTitleString);
+                readerIntent.putExtra(context.getString(R.string.authors_string_extra), authorsStrings);
+
+                readerIntent.putExtra("chapterId", chapterItem.getData().get(position).getId());
+                readerIntent.putExtra("comicId", chapterItem.getData().get(position).getComic_id());
+                readerIntent.putExtra("chapterName", chapterItem.getData().get(position).getChapter_name());
+
+
+                if (position != 0 && position != chapterItem.getData().size() - 1) {
+                    readerIntent.putExtra("previousVisibility", View.VISIBLE);
+                    readerIntent.putExtra("nextVisibility", View.VISIBLE);
+                } else {
+                    if (isAscending && position == 0) {
+                        readerIntent.putExtra("previousVisibility", View.GONE);
+                    }
+                    if (isAscending && position == chapterItem.getData().size() - 1) {
+                        readerIntent.putExtra("nextVisibility", View.GONE);
+                    }
+                    if (!isAscending && position == 0) {
+                        readerIntent.putExtra("nextVisibility", View.GONE);
+                    }
+                    if (!isAscending && position == chapterItem.getData().size() - 1) {
+                        readerIntent.putExtra("previousVisibility", View.GONE);
+                    }
+                }
+
+                context.startActivity(readerIntent);
             }
         });
         if ( sharedPreferences.getBoolean(String.valueOf(chapterItem.getData().get(position).getId()), false ) )
