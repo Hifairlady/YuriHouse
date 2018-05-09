@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
@@ -16,7 +17,8 @@ public class GlideUtil {
             "Android/data/LilyHouse/download/";
 
     public static void setScaledImage(Context context, String urlString, ImageView imageView, final int width) {
-        GlideApp.with(context).load(getGlideUrl(urlString)).transform(new ScaledTransformation(width))
+        GlideApp.with(context).load(getGlideUrl(urlString)).format(DecodeFormat.PREFER_RGB_565)
+                .transform(new ScaledTransformation(width))
                 .placeholder(R.drawable.lily_loading_black1).error(R.drawable.error_black_bg)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);

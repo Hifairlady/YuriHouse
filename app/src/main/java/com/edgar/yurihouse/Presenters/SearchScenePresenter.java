@@ -30,8 +30,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SearchScenePresenter {
 
-    private static final String TAG = "===================" + SearchScenePresenter.class.getSimpleName();
-
     private Context context;
 
     private static final String QUOTE_URL = "https://github.com/Hifairlady/LilyHouse/blob/master/quote_text-file.json";
@@ -247,5 +245,7 @@ public class SearchScenePresenter {
         adapter = new SuggestionAdapter(context, R.layout.item_search_suggestion, datas, onDeleteListener);
         searchTextView.setAdapter(adapter);
     }
+
+
 
 }

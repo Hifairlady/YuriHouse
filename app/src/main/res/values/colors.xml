@@ -8,9 +8,9 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#212121</color>
     <color name="divider">#BDBDBD</color>
-    <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorWhite">#ffffffff</color>
     <color name="colorBlack">#FF000000</color>
     <color name="colorInfoBg">#BB000000</color>
-    <color name="defaultBgColor">#FAFAFAFA</color>
-    <color name="light_gray">#dddddddd</color>
+    <color name="defaultBgColor">#fafafa</color>
+    <color name="light_gray">#eeeeee</color>
 </resources>

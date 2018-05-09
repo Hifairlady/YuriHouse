@@ -32,20 +32,23 @@ public class FullScreenUtil {
     private TextView tvChapter;
     private String chapterName;
     private int totalPage;
+    private int curPosition;
 
     public FullScreenUtil(Context context, Window window, ZoomRecyclerView recyclerView,
-                          ConstraintLayout clReaderInfo, String chapterName) {
+                          ConstraintLayout clReaderInfo, String chapterName, int curPosition) {
         this.window = window;
         this.context = context;
         this.chapterName = chapterName;
         this.totalPage = 1;
+        this.curPosition = curPosition + 1;
         this.clReaderInfo = clReaderInfo;
         this.recyclerView = recyclerView;
     }
 
     public void setTotalPage(int totalPage) {
+        recyclerView.scrollToPosition(curPosition - 1);
         this.totalPage = totalPage;
-        int curPosition = ((LinearLayoutManager)recyclerView.getLayoutManager())
+        curPosition = ((LinearLayoutManager)recyclerView.getLayoutManager())
                 .findFirstVisibleItemPosition() + 1;
         tvPage.setText(context.getString(R.string.reader_info_page, curPosition, totalPage));
     }
@@ -73,7 +76,7 @@ public class FullScreenUtil {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int curPosition = ((LinearLayoutManager)recyclerView.getLayoutManager())
+                curPosition = ((LinearLayoutManager)recyclerView.getLayoutManager())
                         .findFirstVisibleItemPosition() + 1;
                 tvPage.setText(context.getString(R.string.reader_info_page, curPosition, totalPage));
             }
@@ -118,9 +121,8 @@ public class FullScreenUtil {
 
         tvTime.setText(NetworkUtil.getDateString());
         tvNetwork.setText(NetworkUtil.getNetworkType(context));
-        tvPage.setText("1 / " + String.valueOf(totalPage));
+        tvPage.setText(context.getString(R.string.reader_info_page, curPosition, totalPage));
         tvChapter.setText((chapterName == null ? "unknown" : chapterName));
-
     }
 
     //set fullscreen after 2000 milliseconds
@@ -138,4 +140,7 @@ public class FullScreenUtil {
         }
     };
 
+    public int getCurPosition() {
+        return curPosition;
+    }
 }

@@ -21,11 +21,16 @@ public class ReaderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
 
+        int curPosition = 0;
+        if (savedInstanceState != null) {
+            curPosition = savedInstanceState.getInt("curPosition", 1) - 1;
+        }
+
         scenePresenter = new ReaderScenePresenter(ReaderActivity.this, new ReaderController());
 
         scenePresenter.setImmerse(getWindow());
 
-        scenePresenter.setupArgs(getIntent());
+        scenePresenter.setupArgs(getIntent(), curPosition);
 
         View rootView = findViewById(android.R.id.content);
         scenePresenter.initViews(rootView);
@@ -44,5 +49,11 @@ public class ReaderActivity extends AppCompatActivity {
             return super.onKeyDown(keyCode, event);
         }
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curPosition", scenePresenter.getCurPosition());
     }
 }

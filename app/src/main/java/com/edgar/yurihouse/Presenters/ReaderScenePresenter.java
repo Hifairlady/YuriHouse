@@ -50,6 +50,8 @@ public class ReaderScenePresenter {
     private int chapterId, comicId;
     private ConstraintLayout clReaderInfos;
     private String chapterName;
+    private FullScreenUtil fullScreenUtil;
+    private int curPosition;
 
     private int preVisibility, nextVisibility;
 
@@ -71,8 +73,9 @@ public class ReaderScenePresenter {
 
     }
 
-    public void setupArgs(Intent intent) {
+    public void setupArgs(Intent intent, int position) {
 
+        curPosition = position;
         queryUrl = intent.getStringExtra(context.getString(R.string.info_url_string_extra));
         fullTitleString = intent.getStringExtra(context.getString(R.string.full_title_string_extra));
         authorsStrings = intent.getStringArrayExtra(context.getString(R.string.authors_string_extra));
@@ -136,8 +139,8 @@ public class ReaderScenePresenter {
         readerAdapter.setHasStableIds(true);
         recyclerView.setAdapter(readerAdapter);
 
-        final FullScreenUtil fullScreenUtil = new FullScreenUtil(context, window, recyclerView,
-                clReaderInfos, chapterName);
+        fullScreenUtil = new FullScreenUtil(context, window, recyclerView,
+                clReaderInfos, chapterName, curPosition);
         fullScreenUtil.initInfoViews();
         fullScreenUtil.initListeners();
 
@@ -154,14 +157,11 @@ public class ReaderScenePresenter {
 
                         Gson gson = new Gson();
                         readerImageItem = gson.fromJson(jsonString, ReaderImageItem.class);
-//                        readerAdapter = new ReaderAdapter(context, readerImageItem.getPage_url(), width);
                         readerAdapter.setItems(readerImageItem.getPage_url());
                         fullScreenUtil.setTotalPage(readerImageItem.getPage_url().length);
 
                         tvTranslator.setText(context.getString(R.string.drawer_translator_name,
                                 readerImageItem.getTranslator()));
-//                        readerAdapter.setHasStableIds(true);
-//                        recyclerView.setAdapter(readerAdapter);
                         break;
 
                     case R.integer.get_data_failed:
@@ -177,6 +177,9 @@ public class ReaderScenePresenter {
         readerController.setupImageUrl(queryUrl, getImageUrlsHandler);
     }
 
+    public int getCurPosition() {
+        return fullScreenUtil.getCurPosition();
+    }
 
 
 }
