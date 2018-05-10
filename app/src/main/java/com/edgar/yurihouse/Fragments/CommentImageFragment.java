@@ -55,6 +55,6 @@ public class CommentImageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         PhotoView photoView = view.findViewById(R.id.pv_comment_image);
-        GlideUtil.setScaledImage(getContext(), imageUrl, photoView, width);
+        GlideUtil.setScaledImage(photoView, imageUrl);
     }
 }

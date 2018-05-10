@@ -22,7 +22,6 @@ public class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.ZoomViewHo
     private String[] imageUrls;
     private int width;
     private int preloadPosition = 0;
-    private int curPage = 1;
 
     public ReaderAdapter(Context context, int width) {
         this.context = context;
@@ -40,11 +39,11 @@ public class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.ZoomViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ZoomViewHolder holder, int position) {
-        GlideUtil.setScaledImage(context, imageUrls[position], holder.imageView, width);
-        if (preloadPosition < position) {
-            preloadPosition += GlideUtil.preloadImage(context, imageUrls, position+1, 3, width);
-        }
-        curPage = position + 1;
+//        GlideUtil.setScaledImage(holder.imageView.getContext(), imageUrls[position], holder.imageView, width);
+        GlideUtil.loadWithoutMemoryCache(holder.imageView, imageUrls[position]);
+//        if (preloadPosition < position) {
+//            preloadPosition += GlideUtil.preloadImage(context, imageUrls, position+1, 3);
+//        }
 //        Log.d(TAG, "getView: " + preloadPosition + "  " + position);
     }
 
@@ -75,7 +74,4 @@ public class ReaderAdapter extends RecyclerView.Adapter<ReaderAdapter.ZoomViewHo
         notifyDataSetChanged();
     }
 
-    public int getCurPage() {
-        return curPage;
-    }
 }

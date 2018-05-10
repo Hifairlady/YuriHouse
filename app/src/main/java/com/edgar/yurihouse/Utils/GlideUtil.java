@@ -2,9 +2,9 @@ package com.edgar.yurihouse.Utils;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.ImageView;
 
-import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
@@ -13,26 +13,37 @@ import com.edgar.yurihouse.R;
 
 public class GlideUtil {
 
+    private static final String TAG = "======================" + GlideUtil.class.getSimpleName();
+
     private static final String DOWNLOAD_PATH = Environment.getExternalStorageDirectory() +
             "Android/data/LilyHouse/download/";
 
-    public static void setScaledImage(Context context, String urlString, ImageView imageView, final int width) {
-        GlideApp.with(context).load(getGlideUrl(urlString)).format(DecodeFormat.PREFER_RGB_565)
-                .transform(new ScaledTransformation(width))
+    public static void setScaledImage(ImageView imageView, String urlString) {
+        GlideApp.with(imageView).load(getGlideUrl(urlString))
+                .dontTransform()
+                .placeholder(R.drawable.lily_loading_black1)
+                .error(R.drawable.error_black_bg)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imageView);
+    }
+
+    public static void loadWithoutMemoryCache(ImageView imageView, String urlString) {
+        GlideApp.with(imageView).load(getGlideUrl(urlString)).skipMemoryCache(true)
+                .dontTransform()
                 .placeholder(R.drawable.lily_loading_black1).error(R.drawable.error_black_bg)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
     }
 
-    public static void setImageView(Context context, ImageView imageView, String urlString) {
-        GlideApp.with(context).load(getGlideUrl(urlString)).centerCrop()
+    public static void setImageView(ImageView imageView, String urlString) {
+        GlideApp.with(imageView).load(getGlideUrl(urlString)).centerCrop()
                 .placeholder(R.drawable.loading_white_bg).error(R.drawable.error_white_bg)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
     }
 
-    public static void setCircularImage(Context context, ImageView imageView, String urlString) {
-        GlideApp.with(context).load(getGlideUrl(urlString)).circleCrop()
+    public static void setCircularImage(ImageView imageView, String urlString) {
+        GlideApp.with(imageView).load(getGlideUrl(urlString)).circleCrop()
                 .placeholder(R.drawable.ic_authors_circle).error(R.drawable.ic_authors_circle)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
@@ -53,15 +64,16 @@ public class GlideUtil {
         return (int) (dp * scale + 0.5f);
     }
 
-    public static int preloadImage(Context context, String[] urls, int position,
-                                    int preloadNum, int width) {
+    public static int preloadImage(Context context, String[] urls, int position, int preloadNum) {
         int loaded;
         for (loaded = 0; loaded < preloadNum; loaded++) {
             if (position+loaded >= urls.length) break;
             GlideApp.with(context).load(getGlideUrl(urls[position+loaded]))
-                    .placeholder(R.drawable.lily_loading_black1).error(R.drawable.error_black_bg)
+                    .placeholder(R.drawable.lily_loading_black1)
+                    .error(R.drawable.error_black_bg)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .preload();
+            Log.d(TAG, "preloadImage: " + urls[position+loaded]);
         }
         return loaded;
 

@@ -69,7 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         String avatarUrl = commentItem.getAvatar_url();
 //        imageUtil.setCircularImage(mHolder.ivAvatar, avatarUrl);
-        GlideUtil.setCircularImage(context, mHolder.ivAvatar, avatarUrl);
+        GlideUtil.setCircularImage(mHolder.ivAvatar, avatarUrl);
         int genderResId = (commentItem.getSex() == 1) ? R.drawable.ic_male : R.drawable.ic_female;
         mHolder.ivGender.setImageResource(genderResId);
         mHolder.tvNickname.setText(commentItem.getNickname());

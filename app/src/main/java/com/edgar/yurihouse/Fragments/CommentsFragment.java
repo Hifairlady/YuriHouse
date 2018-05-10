@@ -222,7 +222,7 @@ public class CommentsFragment extends Fragment {
             tvLikeCount.setText(String.valueOf(commentItems.get(i).getLike_amount()));
             tvCommentCount.setText(String.valueOf(commentItems.get(i).getReply_amount()));
             tvUsername.setText(commentItems.get(i).getNickname());
-            GlideUtil.setCircularImage(getContext(), ivAvatar, commentItems.get(i).getAvatar_url());
+            GlideUtil.setCircularImage(ivAvatar, commentItems.get(i).getAvatar_url());
 
             int genderResId = (commentItems.get(i).getSex() == 2) ? R.drawable.ic_female : R.drawable.ic_male;
             ivGender.setImageResource(genderResId);

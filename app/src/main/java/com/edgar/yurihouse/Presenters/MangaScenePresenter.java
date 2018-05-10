@@ -76,7 +76,7 @@ public class MangaScenePresenter {
                     tvLabelTime.setText(mangaController.getTimeString());
                     tvLabelStatus.setText(mangaController.getStatusString());
                     tvLabelTypes.setText(mangaController.getTypeString());
-                    GlideUtil.setImageView(context, ivCover, mangaController.getCoverUrl());
+                    GlideUtil.setImageView(ivCover, mangaController.getCoverUrl());
                     authorContainer.removeAllViews();
                     authorsStrings = new String[mangaController.getAuthorItems().size()];
                     for (int i = 0; i < mangaController.getAuthorItems().size(); i++) {

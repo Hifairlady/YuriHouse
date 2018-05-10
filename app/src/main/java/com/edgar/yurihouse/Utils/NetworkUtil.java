@@ -13,7 +13,7 @@ public class NetworkUtil {
 
     public static String getNetworkType(Context context) {
 
-        if (!isConnected(context)) return "未连接";
+        if (!isConnected(context)) return "未联网";
 
         if (isConnectedWifi(context)) return "WIFI";
 

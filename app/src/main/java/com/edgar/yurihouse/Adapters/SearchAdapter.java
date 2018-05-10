@@ -68,7 +68,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (!urlString.startsWith("https")) {
             urlString = "https://images.dmzj.com/" + urlString;
         }
-        GlideUtil.setImageView(context, mHolder.ivCover, urlString);
+        GlideUtil.setImageView(mHolder.ivCover, urlString);
 
         mHolder.tvTitle.setText(resultItem.getName());
         mHolder.tvAuthors.setText(resultItem.getAuthors());
